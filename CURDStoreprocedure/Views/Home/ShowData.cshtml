@@ -1,0 +1,60 @@
+﻿
+@{
+    ViewBag.Title = "ShowData";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width"/>
+    <title>Show Data</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+    <h2>ShowData</h2>
+
+    <div class="container">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Emp_id</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">City</th>
+                    <th scope="col">Pin_Code</th>
+                    <th scope="col">Designation</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{ 
+                    foreach(System.Data.DataRow item in ViewBag.emp.Rows)
+                        {
+                                <tr>
+                                    <td>@item["Emp_id"]</td>
+                                    <td>@item["Name"]</td>
+                                    <td>@item["Address"]</td>
+                                    <td>@item["City"]</td>
+                                    <td>@item["Pin_Code"]</td>
+                                    <td>@item["Designation"]</td>
+                                    <td>
+                                        <a href="/Home/UpdateRecord?id=@item["Emp_id"]">Update</a>
+                                        <a href="/Home/DeleteRecord?id=@item["Emp_id"]">Delete</a>
+                                    </td>
+                                </tr>
+                        }
+                }
+                
+
+            </tbody>
+        </table>
+    </div>
+
+    <footer>
+        &copy; 2023 My Webpage. All rights reserved.
+    </footer>
+</body>
+</html>
+
+
+
